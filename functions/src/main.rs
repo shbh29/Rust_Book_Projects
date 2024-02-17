@@ -1,8 +1,9 @@
 fn main() {
-    println!("main function");
-    another_function();
+    let x  = {
+        let y =  5;
+        y + 1
+    };
+
+    println! ("value of x is {x}");
 }
 
-fn another_function() {
-    println!("this is another function");
-}
