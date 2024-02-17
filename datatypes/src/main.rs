@@ -29,6 +29,13 @@ fn main() {
 
     println! ("my tuple float is : {}", x.1);
 
-    
+    let my_arr = [1,2,3,4,5];
+
+    println!("my array first element: {}",my_arr[0]);
+
+    let my_arr = [5; 10];
+
+    println!("my arr of 10 elements: {}", my_arr[5]);
+    println!("my arr of 10 length: {}", my_arr.len());
     
 }
