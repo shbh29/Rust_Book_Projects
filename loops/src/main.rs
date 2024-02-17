@@ -1,14 +1,11 @@
 fn main() {
-    let mut counter = 0;
-    'label1:loop {
-        let mut y = 10;
-        loop {
-            println!("remaining: {y}");
-            if y == 9 { break; }
-            if counter > 5 { break 'label1; }
-            y -= 1;
+   let arr = [5,3,6,6,7,8,44,5,5,5];
+    let mut count = 0;
+   let count_len = loop {
+        count += 1;
+        if count >= arr.len() {
+            break count;
         }
-        println!("Hello, world!");
-        counter += 1;
-    }
+   };
+   println!(" count of array is: {count_len}");
 }
