@@ -19,4 +19,18 @@ fn while_loop() {
 
 }
 
+fn main() {
+    // print array of elements
+    let arr = [1,2,3,4,5,6,7,8];
 
+    for e in arr {
+        println!(" array element: {e}");
+    }
+
+    // print elements using index values
+    println!("printing using array elements");
+    for i in (0..8) {// 8 is exclusive. i.e. range will be 0 to 7
+        println!(" array element: {}", arr[i]);
+    }
+
+}
