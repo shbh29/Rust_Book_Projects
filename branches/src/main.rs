@@ -1,9 +1,6 @@
 fn main() {
-    let a = 7;
-
-    if a < 5 {
-        println!("condition is true");
-    } else {
-        println!("condtion is false");
-    }
+    //assigning values of if
+    let a = 6;
+    let b =  if a < 6 { 5 } else { 10 };
+    println!("value of b is {b}");
 }
