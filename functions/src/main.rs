@@ -1,9 +1,9 @@
 fn main() {
-    let x  = {
-        let y =  5;
-        y + 1
-    };
+    let x = calculate_x();
 
-    println! ("value of x is {x}");
+    println!("value of x is {x}")
 }
 
+fn calculate_x() -> i32 {
+    7
+}
