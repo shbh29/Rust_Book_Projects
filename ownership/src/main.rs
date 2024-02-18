@@ -46,10 +46,29 @@ fn main() {
 
     //
     //---------------------Transfer Ownership to immutabl Ref type-----
-    transfer_to_immutable_ref(&immutable_var);
-    transfer_to_immutable_ref(&mutable_var);
-    transfer_to_immutable_ref(immutable_ref);
-    transfer_to_immutable_ref(mutable_ref);
+    //transfer_to_immutable_ref(&immutable_var);
+    //transfer_to_immutable_ref(&mutable_var);
+    //transfer_to_immutable_ref(immutable_ref);
+    //transfer_to_immutable_ref(mutable_ref);
+    //
+    //------------------------------------------------------
+    //
+
+
+    //--------------------Transfer Ownership to mutable reference type---
+    //transfer_to_mutable_ref(&mut immutable_var);
+    //not legal to pass
+
+    transfer_to_mutable_ref(&mut mutable_var);// legal
+    
+    // Not legal to pass
+    //transfer_to_mutable_ref(&mut immutable_ref);
+    
+   // legal to pass with &mut 
+    transfer_to_mutable_ref(&mut mutable_ref);
+
+
+    
 
     //println!("immutable var: {immutable_var}");
     //println!("mutable var: {mutable_var}");
@@ -70,4 +89,8 @@ fn transfer_to_immutable_ref(s : &String) {
     println!("immutable ref access: {}", s);
 }
 
+fn transfer_to_mutable_ref(s: &mut String) {
+    s.push_str("...!!");
+    println!("mutated by reference: {}",s);
+}
 
