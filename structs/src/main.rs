@@ -1,3 +1,4 @@
+#[derive(Debug)]
 struct User {
     name: String,
     email: String,
@@ -43,6 +44,11 @@ fn main() {
     println!("email of User 3 is {}!", user3.email);
     println!("email of User 2 is {}!", user2.email);
 
+    // Printing the user variables
+    // #[derive(Debug)]
+    // {:?}
 
+    println!("User 2 contents are: {:#?}", user2);
+    println!("User 3  contents are: {:?}", user3);
 
 }
