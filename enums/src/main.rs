@@ -29,5 +29,11 @@ fn main() {
        _ => (),
    };
 
+   //------- if let
+   let a = Some(5);
+
+   if let Some(i) = a {
+       println!("Integer is {}", i);
+   }
 
 }
