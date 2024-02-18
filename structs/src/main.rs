@@ -1,4 +1,4 @@
-
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -38,6 +38,15 @@ fn main() {
 
     println! ("rect1 can contain rect2: {}", rect.can_contain(&rect2));
     println! ("rect1 can contain rect3: {}", rect.can_contain(&rect3));
+
+    // dbg! macro
+    let scale = 2;
+    let rect4 = Rectangle {
+        width: dbg!(rect.width * scale),
+        height: rect.height,
+    };
+
+    dbg!(&rect4);
 
 }
 
