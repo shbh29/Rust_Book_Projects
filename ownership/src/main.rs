@@ -1,34 +1,23 @@
 fn main() {
-    let s = takes_ownership_from();
+    let immutable_var = String::from("immutable var");
+    //let mut mutable_var = String::from("mutable var");
+    //let immutable_ref : &str = &String::from("immutable reference");
+    //let mut mutable_ref : &mut str = &mut String:: from("mutable ref");
 
-    println!("Got ownership of {s}");
+    get_immutable(immutable_var);// As above declaration is of String type and not str
+                                 // type(primitive type)(Stack memory) it can transfer its
+                                 // ownership to another function.
+                                 // str type could not transfer its ownership to another function
 
-    let stri = takes_ownership_and_gives_back(&s);
 
-    println!("I transferred the ownership and brought back : {stri}: {}", &stri);
 
-    passing_ownership_to(s);
-
-    //println!("this should be illegal to access! {s}")
+    //println!("immutable var: {immutable_var}");
+    //println!("mutable var: {mutable_var}");
+    //println!("immutable ref: {immutable_ref}");
+    //println!("mutable ref: {mutable_ref}");
 }
 
-fn takes_ownership_from() -> String {
-    let s = String::from("hello");
-
-    s
+fn get_immutable(s : String) {
+    println!("immutable var: {s}");
 }
-
-fn takes_ownership_and_gives_back(s : &String) -> &String {
-    s
-}
-
-fn passing_ownership_to(mut s : String) {// immutable reference passed mutable String and modified.
-    println!("I have ownership of {s}");
-
-    s.push_str(", world");
-
-    println!("I modified value of s to {s}");
-}
-
-
 
