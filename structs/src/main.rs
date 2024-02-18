@@ -13,6 +13,15 @@ impl Rectangle {
     }
 }
 
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
 fn main() {
     let rect = Rectangle {
         width: 30,
@@ -48,8 +57,13 @@ fn main() {
 
     dbg!(&rect4);
 
+    //create something like static method that return object of Rectangle
+    //another block of impl
+    let square  = Rectangle::square(40);
+    dbg!(&square);
+
 }
 
-fn area(rect : &Rectangle) -> u32 {
+fn area(rect: &Rectangle) -> u32 {
     rect.width * rect.height
 }
