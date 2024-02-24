@@ -1,9 +1,10 @@
 
 pub mod summary;
 pub mod news_article;
+pub mod tweet;
+pub mod tv_report;
 
 use crate::sumarizer::summary::Summary;
-// use crate::sumarizer::news_article;
 
 pub fn main() {
     let news_article = news_article::NewsArticle{
@@ -15,6 +16,23 @@ pub fn main() {
         date: String::from("24th, Feb 2024")
     };
 
+    let tweet = tweet::Tweet {
+        user: String::from("Ravichandran Ashwin"),
+        content: String::from(
+            "Ravindra Jadega is a fun guy. Remember to ride horse in Test Match as well."
+        ),
+        retweet: false,
+    };
+
+    let tv_report = tv_report::TvReport {
+        news_anchor: String::from("Sudhir Chaudhary"),
+        tv_channel: String::from("Aaj Tak"),
+        topic: String::from("Chhatra Copy"),
+    };
+
+
     println!("News Ariticle summary: {}", news_article.summarize());
+    println!("Tweet summary: {}", tweet.summarize());
+    println!("Tweet summary: {}", tv_report.summarize());
 
 }
