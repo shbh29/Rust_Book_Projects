@@ -1,4 +1,5 @@
 pub trait Summary {
+    // fn new() -> impl Summary;
     fn summary_author(&self) -> String{"".to_string()}
     fn summarize(&self) -> String {
         format!("Read along...")

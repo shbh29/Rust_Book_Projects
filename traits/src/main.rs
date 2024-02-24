@@ -27,11 +27,20 @@ fn main() {
     };
 
 
-    // println!("News Ariticle summary: {}", news_article.summarize());
-    // println!("Tweet summary: {}", tweet.summarize());
-    // println!("Tweet summary: {}", tv_report.summarize());
+    println!("News Ariticle summary: {}", news_article.summarize());
+    println!("Tweet summary: {}", tweet.summarize());
+    println!("Tweet summary: {}", tv_report.summarize());
     
 
     params::broadcast(&news_article, &tv_report, &tweet);
+
+    params::display(&tweet);
+
+    params::show(&tweet);
+    // params::show(&tv_report); // won't work
+
+    let tweet  = params::get_tweet();
+
+    // println!("{}", tweet.user); // cannot be called on trait type tweet
 
 }
