@@ -7,7 +7,10 @@ pub struct Tweet {
 }
 
 impl Summary for Tweet {
+    fn summary_author(&self) -> String {
+        format!(" by {}", self.user)
+    }
     fn summarize(&self) -> String {
-        format!("User {} has tweeted: {}", self.user, self.content)
+        format!("Tweet {} {}", self.content, self.summary_author())
     }
 }

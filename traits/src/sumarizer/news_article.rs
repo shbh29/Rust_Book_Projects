@@ -1,4 +1,4 @@
-use super::Summary;
+use super::summary::Summary;
 
 pub struct NewsArticle {
     pub name: String,
