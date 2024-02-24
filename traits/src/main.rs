@@ -32,7 +32,6 @@ fn main() {
     // println!("Tweet summary: {}", tv_report.summarize());
     
 
-    params::broadcast(&news_article);
-    params::broadcast(&tv_report);
-    params::broadcast(&tweet);
+    params::broadcast(&news_article, &tv_report, &tweet);
+
 }
