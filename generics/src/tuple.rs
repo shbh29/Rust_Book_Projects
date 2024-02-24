@@ -16,6 +16,7 @@ pub fn main() {
     let origin1 = PointLocations::Origin1;
 
     println!("origin: {:?}", origin);
+    println!("origin: {:?}", origin1);
 
 
 }
