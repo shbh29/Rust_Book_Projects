@@ -1,21 +1,33 @@
-use std::{thread, time::Duration};
+use std::thread;
+
+#[derive(Debug)]
+pub struct Rectangle {
+    pub width: i32,
+    pub height: i32,
+}
 
 
 fn main() {
-    // creating an expensive macro
-    let expensive_closure = |num: u32| -> u32 {
-        println!("calculating slowly...");
-        thread::sleep(Duration::from_secs(2));
-        num
-    };
-    println!("calculated number: {}", expensive_closure(2));
-
-    // compile time function declaration
-    let return_same = |x| x;
-    let my = return_same("My Name is Singh");
-    println!("printed {}", my);
-
+    // move to thread
+    // let list = vec![1, 2, 3];
     
+    // thread::spawn(move || println!("list content from thread: {:?}", list))
+    //     .join()
+    //     .unwrap();
 
+
+    //Rectangle sort by width
+    let mut arr = [
+        Rectangle{width: 13, height: 7},
+        Rectangle{width: 3, height: 6},
+        Rectangle{width: 7, height: 10},
+    ];
+
+    println!("array elements: {:#?}", arr);
+
+    arr.sort_by_key(|e| -e.width);
+
+
+    println!("array elements: {:#?}", arr);
 
 }
