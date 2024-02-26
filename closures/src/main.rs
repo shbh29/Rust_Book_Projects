@@ -9,11 +9,11 @@ pub struct Rectangle {
 
 fn main() {
     // move to thread
-    // let list = vec![1, 2, 3];
+    let list = vec![1, 2, 3];
     
-    // thread::spawn(move || println!("list content from thread: {:?}", list))
-    //     .join()
-    //     .unwrap();
+    thread::spawn(move || println!("list content from thread: {:?}", list))
+        .join()
+        .unwrap();
 
 
     //Rectangle sort by width
@@ -23,11 +23,21 @@ fn main() {
         Rectangle{width: 7, height: 10},
     ];
 
+    // let mut sort_operations = vec![];
+    // let value = String::from("by key called");
+    let mut num_sort_operations = 0;
+
     println!("array elements: {:#?}", arr);
 
-    arr.sort_by_key(|e| -e.width);
+    arr.sort_by_key(|e| {
+        // sort_operations.push(value);
+        num_sort_operations += 1;
+        -e.width
+    });
 
+    println!();
+    println!("{:#?}, sorted in {num_sort_operations} operations", arr);
 
-    println!("array elements: {:#?}", arr);
+    // println!("array elements: {:#?}", arr);
 
 }
