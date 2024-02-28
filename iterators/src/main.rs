@@ -10,10 +10,14 @@ fn main() {
 
 
     let v_iter = v.iter();
-    
+
     // map into multiple of 10
     let multply10x : Vec<i32> = v_iter.map(|x| x * 10).collect();
     println!("10 numbers: {:?}, original numbers: {:?}", multply10x, v);
+
+    //sum of number
+    let sum : i32 = v.iter().sum();
+    println!("sum of numbers is: {}", sum);
 
 
 }
