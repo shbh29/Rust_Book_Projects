@@ -1,8 +1,10 @@
-fn main() {
-    let x = 5;
-    let y = Box::new(5);
+#[derive(Debug)]
+struct Node {
+    value: i32,
+    parent: Option<Box<Node>>,
+}
 
-    assert_eq!(5, x);
-    assert_eq!(5, *y);
-    println!("done");
+fn main() {
+    let n = Node { value: 5, parent: Some(Box::new(Node{value: 1, parent: None})) };
+    println!("Print: {:?}", n);
 }
