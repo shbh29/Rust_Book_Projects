@@ -45,9 +45,41 @@ pub mod node {
     }
 
     fn main() {
-        let n = Node { value: 5, parent: Some(Box::new(Node{value: 1, parent: None})) };
+        let n = Node {
+            value: 5,
+            parent: Some(Box::new(Node {
+                value: 1,
+                parent: None,
+            })),
+        };
         println!("Print: {:?}", n);
     }
 }
 
+pub mod rc_use {
+    #[derive(Debug)]
+    enum Node {
+        Val(i32, Rc<Node>),
+        Nil,
+    }
 
+    use std::rc::Rc;
+    use Node::{Nil, Val};
+
+    pub fn main() {
+        let a = Rc::new(Val(5, Rc::new(Val(3, Rc::new(Nil)))));
+        println!("Rc count is: {}", Rc::strong_count(&a));
+        let b = Rc::new(Val(2, Rc::clone(&a)));
+        println!("Rc count is: {}", Rc::strong_count(&a));
+        {
+            let c = Rc::new(Val(1, Rc::clone(&a)));
+            println!("Rc count is: {}", Rc::strong_count(&a));
+            println!("{:?}", c);
+        }
+        println!("after c out of scope Rc count is: {}", Rc::strong_count(&a));
+
+        println!("{:?}", b);
+    }
+}
+
+pub mod send_message;
