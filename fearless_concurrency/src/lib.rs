@@ -17,3 +17,19 @@ pub mod simple_thread_run {
         handle.join().unwrap();
     }
 }
+
+pub mod move_keyword {
+    use std::thread;
+
+    pub fn main() {
+        let v = vec![1, 2, 3];
+
+        let handle = thread::spawn(move || {
+            println!("vector v: {:?}", v);
+        });
+
+        println!("hello from main");
+
+        handle.join().unwrap();
+    }
+}

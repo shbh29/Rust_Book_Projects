@@ -1,15 +1,15 @@
-use std::thread;
+use std::{sync::mpsc, thread};
+
 
 fn main() {
+    let (tx, rx) = mpsc::channel();
 
-    let v = vec![1,2,3];
-    
-    let handle = thread::spawn(move || {
-        println!("vector v: {:?}", v);    
+    thread::spawn(move || {
+        let msg = "hi";
+        tx.send(msg).unwrap();
+        println!("Hello from spawned thread: message sent: {}", msg);
     });
 
-    println!("hello from main");
-
-    handle.join().unwrap();
-
+    let received = rx.recv().unwrap();
+    println!("Got: {}", received);
 }
