@@ -1,19 +1,15 @@
-use std::{thread, time::Duration};
+use std::thread;
 
 fn main() {
+
+    let v = vec![1,2,3];
     
-    let handle = thread::spawn(|| {
-        for i in 1..10 {
-            println!("hello from thread {}", i);
-            thread::sleep(Duration::from_millis(1))
-        }        
+    let handle = thread::spawn(move || {
+        println!("vector v: {:?}", v);    
     });
 
-    for i in 1..5 {
-        println!("Hello from main! {} ", i);
-        thread::sleep(Duration::from_millis(1));
-    }
-    
+    println!("hello from main");
+
     handle.join().unwrap();
 
 }
