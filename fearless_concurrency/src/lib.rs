@@ -33,3 +33,20 @@ pub mod move_keyword {
         handle.join().unwrap();
     }
 }
+
+pub mod channel_message_passing {
+    use std::{sync::mpsc, thread};
+
+    pub fn main() {
+        let (tx, rx) = mpsc::channel();
+
+        thread::spawn(move || {
+            let msg = String::from("hi");
+            tx.send(msg).unwrap();
+            // println!("Hello from spawned thread: message sent: {}", msg); // using after sending the ownership of message is not allowed.
+        });
+
+        let received = rx.recv().unwrap();
+        println!("Got: {}", received);
+    }
+}
