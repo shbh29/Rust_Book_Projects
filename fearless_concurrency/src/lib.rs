@@ -50,3 +50,6 @@ pub mod channel_message_passing {
         println!("Got: {}", received);
     }
 }
+
+pub mod channel_multiple_tx;
+pub mod mutex;

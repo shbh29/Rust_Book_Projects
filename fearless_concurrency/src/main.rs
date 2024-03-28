@@ -1,44 +1,24 @@
-use std::{sync::mpsc, thread, time::Duration};
+use std::{sync::{Arc, Mutex}, thread};
+
 
 
 fn main() {
-    let (tx, rx) = mpsc::channel();
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
 
-    let tx1 = tx.clone();
-
-    thread::spawn(move || {
-        let v = vec![
-            String::from("hi"),
-            String::from("hello"),
-            String::from("Namaste"),
-            String::from("Ram Ram")
-        ];
-        
-        for m in v {
-            tx.send(m).unwrap();
-            thread::sleep(Duration::from_secs(1));
-        }
-        
-    });
-
-
-    thread::spawn(move || {
-        let v = vec![
-            String::from("More"),
-            String::from("Messages"),
-            String::from("for"),
-            String::from("You!")
-        ];
-        
-        for m in v {
-            tx1.send(m).unwrap();
-            thread::sleep(Duration::from_secs(1));
-        }
-        
-    });
-
-    for r in rx {
-        println!("Got: {}", r);
+    for _ in 0..10 {
+        let m = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            println!(" mutex: {:?} ", m);
+            let mut val = m.lock().unwrap();
+            *val += 1;
+        });
+        handles.push(handle);
     }
-    
+
+    for h in handles {
+        h.join().unwrap();
+    }
+
+    println!("mutex: {:?} ", counter.lock().unwrap());
 }
