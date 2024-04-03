@@ -1,15 +1,16 @@
-use oop::avg_collection::AverageCollection;
-
+use oop::blog_post::Post;
 
 
 
 fn main() {
-    let mut ac = AverageCollection::new();
+    let mut post = Post::new();
 
-    ac.add(1);
-    ac.add(5);
-    ac.add(10);
-    ac.add(15);
+    post.add_text("This is some added text");
 
-    println!("average of list {:?} is {}", ac.list(), ac.average());
+    post.review_request();
+
+    assert_eq!("", post.content());
+
+    post.approve();
+    assert_eq!("This is some added text", post.content());
 }

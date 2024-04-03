@@ -1,5 +1,5 @@
 pub mod avg_collection {
-    
+
     pub struct AverageCollection {
         list: Vec<i32>,
         average: f64,
@@ -40,3 +40,20 @@ pub mod avg_collection {
         }
     }
 }
+
+pub mod use_avg_collection {
+    use super::avg_collection::AverageCollection;
+
+    pub fn main() {
+        let mut ac = AverageCollection::new();
+
+        ac.add(1);
+        ac.add(5);
+        ac.add(10);
+        ac.add(15);
+
+        println!("average of list {:?} is {}", ac.list(), ac.average());
+    }
+}
+
+pub mod blog_post;
